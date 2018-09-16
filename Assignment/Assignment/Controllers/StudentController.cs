@@ -11,11 +11,10 @@ namespace Assignment.Controllers
     public class StudentController : Controller
     {
         private ThetaProjectContext _ORM=null;
-        private IHostingEnvironment _ENV = null;
-        public StudentController(ThetaProjectContext ORM, IHostingEnvironment ENV)
+        public StudentController(ThetaProjectContext ORM)
         {
             _ORM = ORM;
-            _ENV = ENV;
         }
+
     }
 }
