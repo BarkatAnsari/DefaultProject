@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Assignment.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Assignment.Models;
 
 namespace Assignment
 {
@@ -37,6 +38,12 @@ namespace Assignment
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<ThetaProjectContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("BK")));
+
+
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
