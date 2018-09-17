@@ -44,7 +44,13 @@ namespace Assignment.Controllers
         {
             _ORM.Student.Update(SA);
             _ORM.SaveChanges();
-            return RedirectToAction("LIST");
+            return RedirectToAction("List");
+        }
+        public IActionResult Delete(Student S)
+        {
+            _ORM.Student.Remove(S);
+            _ORM.SaveChanges();
+            return RedirectToAction("List");
         }
     }
 }
