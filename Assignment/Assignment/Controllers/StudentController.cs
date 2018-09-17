@@ -33,5 +33,18 @@ namespace Assignment.Controllers
             IList<Student> I = _ORM.Student.ToList<Student>();
             return View(I);
         }
+        [HttpGet]
+        public IActionResult Detail(int rollno)
+        {
+            Student A = _ORM.Student.Where(m => m.RollNo == rollno).FirstOrDefault<Student>();
+            return View(A);
+        }
+        [HttpPost]
+        public IActionResult Detail(Student SA)
+        {
+            _ORM.Student.Update(SA);
+            _ORM.SaveChanges();
+            return RedirectToAction("LIST");
+        }
     }
 }

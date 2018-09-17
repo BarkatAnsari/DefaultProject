@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Student>
-<h2>List of Total Students</h2>
-<h3>Students Are: @Model.Count()</h3>
+<h2 class="alert alert-success"><span class="glyphicon glyphicon-list"></span>List of Total Students</h2>
+<h3 class="alert alert-danger"><span class="glyphicon glyphicon-copy"></span>Students Are: @Model.Count()</h3>
 
 <table class="table table-bordered table-responsive">
     <thead>
@@ -12,6 +12,7 @@
             <td>Section</td>
             <td>Subject Group</td>
             <td>Teacher InCharge</td>
+            <td>Actions</td>
         </tr>
     </thead>
     <tbody>
@@ -25,6 +26,10 @@
                 <td>@St.Section</td>
                 <td>@St.SubjectGroup</td>
                 <td>@St.TeacherIncharge</td>
+                <td>
+                    <a class="btn btn-sm btn-success" href="/Student/Create">Create Student</a>
+                    <a class="btn btn-sm btn-warning" href="/Student/Detail?rollno=@St.RollNo">Student Detail</a>
+                </td>
             </tr>
         }
     </tbody>
