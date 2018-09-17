@@ -28,5 +28,10 @@ namespace Assignment.Controllers
             ViewBag.M = "The Student has been Added successfully";
             return View();
         }
+        public IActionResult List()
+        {
+            IList<Student> I = _ORM.Student.ToList<Student>();
+            return View(I);
+        }
     }
 }

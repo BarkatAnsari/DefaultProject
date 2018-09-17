@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Student>
+<h2>List of Total Students</h2>
+<h3>Students Are: @Model.Count()</h3>
+
+<table class="table table-bordered table-responsive">
+    <thead>
+        <tr>
+            <td>Roll No</td>
+            <td>Name</td>
+            <td>Father Name</td>
+            <td>Class</td>
+            <td>Section</td>
+            <td>Subject Group</td>
+            <td>Teacher InCharge</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Student St in Model)
+        {
+            <tr>
+                <td>@St.RollNo</td>
+                <td>@St.Name</td>
+                <td>@St.FatherName</td>
+                <td>@St.Class</td>
+                <td>@St.Section</td>
+                <td>@St.SubjectGroup</td>
+                <td>@St.TeacherIncharge</td>
+            </tr>
+        }
+    </tbody>
+</table>
