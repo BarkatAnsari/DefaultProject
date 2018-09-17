@@ -1,0 +1,38 @@
+﻿@model Student
+<h2>Create Student</h2>
+@{ if (ViewBag.M != null)
+    {
+        <h1 class="alert alert-success"><span class="glyphicon glyphicon-ok"></span>@ViewBag.M</h1>
+    }
+}
+        <form asp-controller="Student" asp-action="Create" method="post">
+            <div class="form-group">
+                <label for="Name">Name:</label>
+                <input type="text" asp-for="Name" class="form-control" id="name">
+            </div>
+            <div>
+                <label for="FatherName">Father Name:</label>
+                <input type="text" asp-for="FatherName" class="form-control" id="fathername">
+            </div>
+            <div>
+                <label for="Class">Class:</label>
+                <input type="text" asp-for="Class" class="form-control" id="class">
+            </div>
+            <div>
+                <label for="Section">Section:</label>
+                <input type="text" asp-for="Section" class="form-control" id="section">
+            </div>
+            <div>
+                <label for="SubjectGroup">Subject Group:</label>
+                <input type="text" asp-for="SubjectGroup" class="form-control" id="subjectgroup">
+            </div>
+            <div>
+                <label for="TeacherIncharge">Teacher Incharge:</label>
+                <input type="text" asp-for="TeacherIncharge" class="form-control" id="TeacherIncharge">
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </form>

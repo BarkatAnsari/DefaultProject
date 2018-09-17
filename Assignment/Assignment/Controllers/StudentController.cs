@@ -15,6 +15,18 @@ namespace Assignment.Controllers
         {
             _ORM = ORM;
         }
-
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Student S)
+        {
+            _ORM.Student.Add(S);
+            _ORM.SaveChanges();
+            ViewBag.M = "The Student has been Added successfully";
+            return View();
+        }
     }
 }
