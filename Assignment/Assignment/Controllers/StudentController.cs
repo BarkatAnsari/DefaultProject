@@ -52,5 +52,18 @@ namespace Assignment.Controllers
             _ORM.SaveChanges();
             return RedirectToAction("List");
         }
+        [HttpGet]
+        public IActionResult Edit(int RollNo)
+        {
+            Student E = _ORM.Student.Where(m => m.RollNo == RollNo).FirstOrDefault<Student>();
+            return View(E);
+        }
+        [HttpPost]
+        public IActionResult Edit(Student Ed)
+        {
+            _ORM.Student.Update(Ed);
+            _ORM.SaveChanges();
+            return RedirectToAction("List");
+        }
     }
 }
