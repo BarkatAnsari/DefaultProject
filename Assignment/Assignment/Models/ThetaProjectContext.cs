@@ -31,9 +31,15 @@ namespace Assignment.Models
         {
             modelBuilder.Entity<Student>(entity =>
             {
-                entity.HasKey(e => e.RollNo);
+                entity.HasKey(e => e.Id);
 
-                entity.Property(e => e.RollNo).HasColumnName("Roll_No");
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.RollNo)
+                    .IsRequired()
+                    .HasColumnName("Roll_No")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Class)
                     .IsRequired()
@@ -66,6 +72,18 @@ namespace Assignment.Models
                     .IsRequired()
                     .HasColumnName("Teacher_Incharge")
                     .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasColumnName("Email")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Cv)
+                    .IsRequired()
+                    .HasColumnName("CV")
+                    .HasMaxLength(250)
                     .IsUnicode(false);
             });
 

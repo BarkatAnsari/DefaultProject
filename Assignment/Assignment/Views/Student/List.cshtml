@@ -1,43 +1,74 @@
 ﻿@model IEnumerable<Student>
 <h2 class="alert alert-success"><span class="glyphicon glyphicon-list"></span>List of Total Students</h2>
 <h3 class="alert alert-danger"><span class="glyphicon glyphicon-copy"></span>Students Are: @Model.Count()</h3>
-<table class="table table-bordered table-responsive">
-    <thead>
-        <tr>
-            <td>Roll No</td>
-            <td>Name</td>
-            <td>Father Name</td>
-            <td>Class</td>
-            <td>Section</td>
-            <td>Subject Group</td>
-            <td>Teacher InCharge</td>
-            <td>Actions</td>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (Student St in Model)
-        {
+
+@*<form method="post" action="/Student/List">
+    <input type="text" id="SName" name="SName" />
+    <input type="submit" value="Search" />
+</form>*@
+
+<form asp-controller="Student" asp-action="List" method="post">
+    <div class="form-group">
+        <label for="SName">Search By Name:</label>
+        <input type="text" class="form-control" id="SName" name="SName">
+    </div>
+    <div class="form-group">
+        <label for="Department">Search By Department:</label>
+        <input type="text" class="form-control" id="Department" name="Department">
+    </div>
+    <div class="form-group">
+        <label for="Roll">Search By Roll Number:</label>
+        <input type="text" class="form-control" id="Roll" name="Roll">
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Find" class="btn btn-success" />
+    </div>
+</form>
+
+    <table class="table table-bordered table-responsive">
+        <thead>
             <tr>
-                <td>@St.RollNo</td>
-                <td>@St.Name</td>
-                <td>@St.FatherName</td>
-                <td>@St.Class</td>
-                <td>@St.Section</td>
-                <td>@St.SubjectGroup</td>
-                <td>@St.TeacherIncharge</td>
-                <td>
-                    <a class="btn btn-sm btn-success" href="/Student/Create">Create Student</a>
-                    <br />
-                    <br />
-                    <a class="btn btn-sm btn-warning" href="/Student/Detail?rollno=@St.RollNo">Student Detail</a>
-                    <br />
-                    <br />
-                    <a class="btn btn-sm btn-danger" href="/Student/Delete?RollNo=@St.RollNo">Delete Student</a>
-                    <br />
-                    <br />
-                    <a class="btn btn-sm btn-primary" href="/Student/Edit?RollNo=@St.RollNo">Edit Student</a>
-                </td>
+                <td>ID</td>
+                <td>Roll No</td>
+                <td>Name</td>
+                <td>Father Name</td>
+                <td>Class</td>
+                <td>Section</td>
+                <td>Subject Group</td>
+                <td>Teacher InCharge</td>
+                <td>Email</td>
+                <td>Actions</td>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (Student St in Model)
+            {
+                <tr>
+                    <td>@St.Id</td>
+                    <td>@St.RollNo</td>
+                    <td>@St.Name</td>
+                    <td>@St.FatherName</td>
+                    <td>@St.Class</td>
+                    <td>@St.Section</td>
+                    <td>@St.SubjectGroup</td>
+                    <td>@St.TeacherIncharge</td>
+                    <td>@St.Email</td>
+                    <td>
+                        <a class="btn btn-sm btn-success" href="/Student/Create">Create Student</a>
+                        <br />
+                        <br />
+                        <a class="btn btn-sm btn-warning" href="/Student/Detail?ID=@St.Id">Student Detail</a>
+                        <br />
+                        <br />
+                        <a class="btn btn-sm btn-danger" href="/Student/Delete?Id=@St.Id">Delete Student</a>
+                        <br />
+                        <br />
+                        <a class="btn btn-sm btn-primary" href="/Student/Edit?ID=@St.Id">Edit Student</a>
+                        <br />
+                        <br />
+                        <a class="btn btn-sm btn-default" href="/Student/GetCV?S_CV=@St.Cv">Download CV</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

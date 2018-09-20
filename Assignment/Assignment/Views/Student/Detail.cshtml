@@ -5,6 +5,9 @@
         <h4><span class="glyphicon glyphicon-star-empty"></span>Detail of @Model.Name</h4>
     </div>
     <div>
+        <h4><span class="glyphicon glyphicon-star-empty"></span>Id: @Model.Id</h4>
+    </div>
+    <div>
         <h4><span class="glyphicon glyphicon-star"></span>RollNo: @Model.RollNo</h4>
     </div>
     <div>
@@ -22,6 +25,9 @@
     <div>
         <h4><span class="glyphicon glyphicon-pencil"></span>Teacher: @Model.TeacherIncharge</h4>
     </div>
+    <div>
+        <h4><span class="glyphicon glyphicon-paperclip"></span>Email: @Model.Email</h4>
+    </div>
 </div>
 <div class="col-md-12 alert alert-warning">
     <div>
@@ -33,10 +39,14 @@
     </div>
     <br />
     <div>
-        <a class="btn btn-danger" href="/Student/Delete?RollNo=@Model.RollNo">Delete Student</a>
+        <a class="btn btn-danger" href="/Student/Delete?ID=@Model.Id">Delete Student</a>
     </div>
     <br />
     <div>
-        <a class="btn btn-primary" href="/Student/Edit?RollNo=@Model.RollNo">Edit Student</a>
+        <a class="btn btn-primary" href="/Student/Edit?ID=@Model.Id">Edit Student</a>
+    </div>
+    <br />
+    <div>
+        <a class="btn btn-default" href="/Student/GetCV?S_CV=@Model.Cv">Download CV</a>
     </div>
 </div>
