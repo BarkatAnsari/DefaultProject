@@ -54,7 +54,8 @@ namespace Assignment.Controllers
             SMTP.Port = 587; //465 //25
             SMTP.EnableSsl = true;
             SMTP.Credentials = new System.Net.NetworkCredential("bkansari786.ba@gmail.com", "googlegmail");
-
+            oEmail.IsBodyHtml = true;
+            
             try
             {
                 SMTP.Send(oEmail);
