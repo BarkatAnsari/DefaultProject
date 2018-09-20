@@ -55,7 +55,11 @@ namespace Assignment.Controllers
             SMTP.EnableSsl = true;
             SMTP.Credentials = new System.Net.NetworkCredential("bkansari786.ba@gmail.com", "googlegmail");
             oEmail.IsBodyHtml = true;
-            
+            if (!string.IsNullOrEmpty(S.Cv))
+            {
+                oEmail.Attachments.Add(new Attachment(WWWROOT + S.Cv));
+            }
+
             try
             {
                 SMTP.Send(oEmail);
