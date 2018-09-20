@@ -34,14 +34,35 @@ namespace Assignment.Controllers
             Stream CV_Stream = new FileStream(WWWROOT + CVPath, FileMode.Create);
             Cv.CopyTo(CV_Stream);
             CV_Stream.Close();
-
             S.Cv = CVPath;
-
             _ORM.Student.Add(S);
             _ORM.SaveChanges();
 
-
             
+
+            MailMessage oEmail = new MailMessage();
+            oEmail.From = new MailAddress("bkansari786.ba@gmail.com");
+            oEmail.To.Add(new MailAddress(S.Email));
+            oEmail.CC.Add(new MailAddress("barkatansari360@gmail.com"));
+            oEmail.Subject = "Welcome to ABC";
+            oEmail.Body = "Dear " + S.Name + ",<br><br>" + "Thanks for registering with Al-Ansar Corporations, We are glad to have you in our system." + "<br><br>" + "<b>Regards</b>,<br>Al-Ansar Team";
+            
+
+            //smtp object
+            SmtpClient SMTP = new SmtpClient();
+            SMTP.Host = "smtp.gmail.com";
+            SMTP.Port = 587; //465 //25
+            SMTP.EnableSsl = true;
+            SMTP.Credentials = new System.Net.NetworkCredential("bkansari786.ba@gmail.com", "googlegmail");
+
+            try
+            {
+                SMTP.Send(oEmail);
+            }
+            catch (Exception)
+            {
+            }
+
             ViewBag.M = "The Student has been Added successfully";
             return View();
         }
