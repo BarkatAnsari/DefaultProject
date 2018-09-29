@@ -115,6 +115,21 @@ namespace Assignment.Controllers
             _ORM.SaveChanges();
             return RedirectToAction("List");
         }
+        public string deletestudentajax(Student S)
+        {
+            string result = "";
+            try
+            {
+                _ORM.Student.Remove(S);
+                _ORM.SaveChanges();
+                result = "Yes";
+            }
+            catch (Exception ex)
+            {
+                result = "No";
+            }
+            return result;
+        }
         [HttpGet]
         public IActionResult Edit(int ID)
         {
