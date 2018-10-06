@@ -43,7 +43,6 @@ namespace Assignment
                 options.UseSqlServer(
                     Configuration.GetConnectionString("BK")));
 
-
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 

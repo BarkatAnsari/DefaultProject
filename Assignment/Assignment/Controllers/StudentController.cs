@@ -13,7 +13,7 @@ namespace Assignment.Controllers
 {
     public class StudentController : Controller
     {
-        private ThetaProjectContext _ORM=null;
+        private ThetaProjectContext _ORM = null;
         private IHostingEnvironment _ENV = null;
         public StudentController(ThetaProjectContext ORM, IHostingEnvironment ENV)
         {
@@ -38,7 +38,7 @@ namespace Assignment.Controllers
             _ORM.Student.Add(S);
             _ORM.SaveChanges();
 
-            
+
 
             MailMessage oEmail = new MailMessage();
             oEmail.From = new MailAddress("bkansari786.ba@gmail.com");
@@ -46,7 +46,7 @@ namespace Assignment.Controllers
             oEmail.CC.Add(new MailAddress("barkatansari360@gmail.com"));
             oEmail.Subject = "Welcome to ABC";
             oEmail.Body = "Dear " + S.Name + ",<br><br>" + "Thanks for registering with Al-Ansar Corporations, We are glad to have you in our system." + "<br><br>" + "<b>Regards</b>,<br>Al-Ansar Team";
-            
+
 
             //smtp object
             SmtpClient SMTP = new SmtpClient();
@@ -74,7 +74,7 @@ namespace Assignment.Controllers
         //CV Download code
         public FileResult GetCV(string S_CV)
         {
-            if(string.IsNullOrEmpty(S_CV))
+            if (string.IsNullOrEmpty(S_CV))
             {
                 ViewBag.Error = "Invalid Path";
                 return null;
@@ -92,7 +92,7 @@ namespace Assignment.Controllers
         public IActionResult List(string SName, string Department, string Roll)
         {
             string myString = Roll.ToString();
-            IList<Student> AllStudents = _ORM.Student.Where(m => m.Name.Contains(SName)|| m.SubjectGroup.Contains(Department)|| m.RollNo.Contains(Roll)).ToList<Student>();
+            IList<Student> AllStudents = _ORM.Student.Where(m => m.Name.Contains(SName) || m.SubjectGroup.Contains(Department) || m.RollNo.Contains(Roll)).ToList<Student>();
 
             return View(AllStudents);
         }
@@ -124,7 +124,7 @@ namespace Assignment.Controllers
                 _ORM.SaveChanges();
                 result = "Yes";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 result = "No";
             }
