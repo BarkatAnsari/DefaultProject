@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using Assignment.Models;
@@ -46,6 +47,15 @@ namespace Assignment.Controllers
             oEmail.CC.Add(new MailAddress("barkatansari360@gmail.com"));
             oEmail.Subject = "Welcome to ABC";
             oEmail.Body = "Dear " + S.Name + ",<br><br>" + "Thanks for registering with Al-Ansar Corporations, We are glad to have you in our system." + "<br><br>" + "<b>Regards</b>,<br>Al-Ansar Team";
+
+            string APIURL = "http://bulksms.com.pk/api/sms.php?username=923006174740&password=1765&sender=BrandName&mobile=923316125207&message= Welcome to our website.";
+            using (var APIClient = new HttpClient())
+            {
+                Task<HttpResponseMessage> RM = APIClient.GetAsync(APIURL);
+                Task<string> FinalRespone = RM.Result.Content.ReadAsStringAsync();
+            }
+            ModelState.Clear();
+
 
 
             //smtp object
