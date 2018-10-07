@@ -1,52 +1,75 @@
 ﻿@model Student
 <h1 class="alert alert-success"><span class="glyphicon glyphicon-chevron-right"></span> Detail of the Student</h1>
-<div class="col-md-12 alert alert-info">
-    <div>
-        <h4><span class="glyphicon glyphicon-star-empty"></span>Detail of @Model.Name</h4>
+<div class="col-md-12">
+    <div class="col-md-8 alert alert-info">
+        <div>
+            <h4><span class="glyphicon glyphicon-star-empty"></span>Detail of @Model.Name</h4>
+        </div>
+        <div>
+            <h4><span class="glyphicon glyphicon-star-empty"></span>Id: @Model.Id</h4>
+        </div>
+        <div>
+            <h4><span class="glyphicon glyphicon-star"></span>RollNo: @Model.RollNo</h4>
+        </div>
+        <div>
+            <h4><span class="glyphicon glyphicon-user"></span>FatherName: @Model.FatherName</h4>
+        </div>
+        <div>
+            <h4><span class="glyphicon glyphicon-apple"></span>Class: @Model.Class</h4>
+        </div>
+        <div>
+            <h4><span class="glyphicon glyphicon-copy"></span>Section: @Model.Section</h4>
+        </div>
+        <div>
+            <h4><span class="glyphicon glyphicon-book"></span>Subject: @Model.SubjectGroup</h4>
+        </div>
+        <div>
+            <h4><span class="glyphicon glyphicon-pencil"></span>Teacher: @Model.TeacherIncharge</h4>
+        </div>
+        <div>
+            <h4><span class="glyphicon glyphicon-paperclip"></span>Email: @Model.Email</h4>
+        </div>
     </div>
-    <div>
-        <h4><span class="glyphicon glyphicon-star-empty"></span>Id: @Model.Id</h4>
+    <div class="col-md-4" id="StudentsNamesDiv">
+
     </div>
-    <div>
-        <h4><span class="glyphicon glyphicon-star"></span>RollNo: @Model.RollNo</h4>
-    </div>
-    <div>
-        <h4><span class="glyphicon glyphicon-user"></span>FatherName: @Model.FatherName</h4>
-    </div>
-    <div>
-        <h4><span class="glyphicon glyphicon-apple"></span>Class: @Model.Class</h4>
-    </div>
-    <div>
-        <h4><span class="glyphicon glyphicon-copy"></span>Section: @Model.Section</h4>
-    </div>
-    <div>
-        <h4><span class="glyphicon glyphicon-book"></span>Subject: @Model.SubjectGroup</h4>
-    </div>
-    <div>
-        <h4><span class="glyphicon glyphicon-pencil"></span>Teacher: @Model.TeacherIncharge</h4>
-    </div>
-    <div>
-        <h4><span class="glyphicon glyphicon-paperclip"></span>Email: @Model.Email</h4>
+    <div class="col-md-12 alert alert-warning">
+        <div>
+            <a class="btn btn-warning" href="/Student/Create">Create a new Student</a>
+        </div>
+        <br />
+        <div>
+            <a class="btn btn-info" href="/Student/List">All Students that are Registered</a>
+        </div>
+        <br />
+        <div>
+            <a class="btn btn-danger" href="/Student/Delete?ID=@Model.Id">Delete Student</a>
+        </div>
+        <br />
+        <div>
+            <a class="btn btn-primary" href="/Student/Edit?ID=@Model.Id">Edit Student</a>
+        </div>
+        <br />
+        <div>
+            <a class="btn btn-default" href="/Student/GetCV?S_CV=@Model.Cv">Download CV</a>
+        </div>
     </div>
 </div>
-<div class="col-md-12 alert alert-warning">
-    <div>
-        <a class="btn btn-warning" href="/Student/Create">Create a new Student</a>
-    </div>
-    <br />
-    <div>
-        <a class="btn btn-info" href="/Student/List">All Students that are Registered</a>
-    </div>
-    <br />
-    <div>
-        <a class="btn btn-danger" href="/Student/Delete?ID=@Model.Id">Delete Student</a>
-    </div>
-    <br />
-    <div>
-        <a class="btn btn-primary" href="/Student/Edit?ID=@Model.Id">Edit Student</a>
-    </div>
-    <br />
-    <div>
-        <a class="btn btn-default" href="/Student/GetCV?S_CV=@Model.Cv">Download CV</a>
-    </div>
+
+
+<div id="AdDiv">
 </div>
+
+@section Scripts
+        {
+
+<script>
+        $(function () {
+
+            $('#AdDiv').load("/Student/ShowAd");
+            $('#StudentsNamesDiv').load('/Student/GetStudentsNames');
+
+        });
+
+</script>
+    }
