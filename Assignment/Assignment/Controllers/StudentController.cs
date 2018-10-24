@@ -63,7 +63,7 @@ namespace Assignment.Controllers
             SMTP.Host = "smtp.gmail.com";
             SMTP.Port = 587; //465 //25
             SMTP.EnableSsl = true;
-            SMTP.Credentials = new System.Net.NetworkCredential("bkansari786.ba@gmail.com", "googlegmail");
+            SMTP.Credentials = new System.Net.NetworkCredential("bkansari786.ba@gmail.com", "GOOGLEGMAIL");
             oEmail.IsBodyHtml = true;
             if (!string.IsNullOrEmpty(S.Cv))
             {
