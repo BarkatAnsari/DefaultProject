@@ -3,73 +3,106 @@
 <div class="col-md-12">
     <div class="col-md-8 alert alert-info">
         <div>
-            <h4><span class="glyphicon glyphicon-star-empty"></span>Detail of @Model.Name</h4>
+            <h4><span class="glyphicon glyphicon-star-empty"></span> Detail of @Model.Name</h4>
         </div>
         <div>
-            <h4><span class="glyphicon glyphicon-star-empty"></span>Id: @Model.Id</h4>
+            <h4><span class="glyphicon glyphicon-star-empty"></span> Id: @Model.Id</h4>
         </div>
         <div>
-            <h4><span class="glyphicon glyphicon-star"></span>RollNo: @Model.RollNo</h4>
+            <h4><span class="glyphicon glyphicon-star"></span> RollNo: @Model.RollNo</h4>
         </div>
         <div>
-            <h4><span class="glyphicon glyphicon-user"></span>FatherName: @Model.FatherName</h4>
+            <h4><span class="glyphicon glyphicon-user"></span> FatherName: @Model.FatherName</h4>
         </div>
         <div>
-            <h4><span class="glyphicon glyphicon-apple"></span>Class: @Model.Class</h4>
+            <h4><span class="glyphicon glyphicon-apple"></span> Class: @Model.Class</h4>
         </div>
         <div>
-            <h4><span class="glyphicon glyphicon-copy"></span>Section: @Model.Section</h4>
+            <h4><span class="glyphicon glyphicon-copy"></span> Section: @Model.Section</h4>
         </div>
         <div>
-            <h4><span class="glyphicon glyphicon-book"></span>Subject: @Model.SubjectGroup</h4>
+            <h4><span class="glyphicon glyphicon-book"></span> Subject: @Model.SubjectGroup</h4>
         </div>
         <div>
-            <h4><span class="glyphicon glyphicon-pencil"></span>Teacher: @Model.TeacherIncharge</h4>
+            <h4><span class="glyphicon glyphicon-pencil"></span> Teacher: @Model.TeacherIncharge</h4>
         </div>
         <div>
-            <h4><span class="glyphicon glyphicon-paperclip"></span>Email: @Model.Email</h4>
+            <h4><span class="glyphicon glyphicon-paperclip"></span> Email: @Model.Email</h4>
         </div>
     </div>
-    <div class="col-md-4" id="StudentsNamesDiv">
-
-    </div>
-    <div class="col-md-12 alert alert-warning">
+    <div class="col-md-1"></div>
+    <div class="col-md-3 alert alert-warning">
         <div>
-            <a class="btn btn-warning" href="/Student/Create">Create a new Student</a>
+            <a class="btn btn-warning btn-block" href="/Student/Create"><span class="glyphicon glyphicon-pencil"></span>Create a new Student</a>
         </div>
         <br />
         <div>
-            <a class="btn btn-info" href="/Student/List">All Students that are Registered</a>
+            <a class="btn btn-info btn-block" href="/Student/List"><span class="glyphicon glyphicon-copy"></span>All Students that are Registered</a>
         </div>
         <br />
         <div>
-            <a class="btn btn-danger" href="/Student/Delete?ID=@Model.Id">Delete Student</a>
+            <a class="btn btn-danger btn-block" href="/Student/Delete?ID=@Model.Id"><span class="glyphicon glyphicon-alert"></span>Delete Student</a>
         </div>
         <br />
         <div>
-            <a class="btn btn-primary" href="/Student/Edit?ID=@Model.Id">Edit Student</a>
+            <a class="btn btn-primary btn-block" href="/Student/Edit?ID=@Model.Id"><span class="glyphicon glyphicon-edit"></span>Edit Student</a>
         </div>
         <br />
         <div>
-            <a class="btn btn-default" href="/Student/GetCV?S_CV=@Model.Cv">Download CV</a>
+            <a class="btn btn-default btn-block" href="/Student/GetCV?S_CV=@Model.Cv"> <span class="glyphicon glyphicon-download"></span>Download Profile Picture</a>
         </div>
     </div>
 </div>
 
+<div class="col-md-12">
+    <div class="col-md-8">
+        <div id="AdDiv">
 
-<div id="AdDiv">
+
+        </div>
+    </div>
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-3">
+        <div id="StudentsNamesDiv">
+
+        </div>
+    </div>
 </div>
+
+<div id="disqus_thread"></div>
 
 @section Scripts
-        {
+    {
 
-<script>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
         $(function () {
-
+            //.Load Concepts not the Discuss---Starts here----------
             $('#AdDiv').load("/Student/ShowAd");
             $('#StudentsNamesDiv').load('/Student/GetStudentsNames');
+            //-----------------------Ends Here---------------------
 
-        });
 
-</script>
- }
+            //Discus code
+            // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://bkansari-1.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+
+        })();
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+}

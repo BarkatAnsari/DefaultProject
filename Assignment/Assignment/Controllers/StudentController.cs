@@ -145,7 +145,7 @@ namespace Assignment.Controllers
         public string ShowAd()
         {
             string Ad = "";
-            Ad = "<img class='img img-responsive' src='http://lorempixel.com/400/400/sports/Theta-Solutions/'/>";
+            Ad = "<img class='img img-responsive' src='http://lorempixel.com/400/200/nature/BarkatAnsari'/>";
             return Ad;
         }
 
@@ -156,12 +156,13 @@ namespace Assignment.Controllers
             var r = Request;
 
             IList<Student> All = _ORM.Student.ToList<Student>();
-            Result += "<h1 class='alert alert-success'>Total Students: " + All.Count + "</h1>";
+            Result += "<div class='alert alert-success'><h3><span class='glyphicon glyphicon-list'></span> Total Students: " + All.Count + "</h3></div>";
 
             foreach (Student S in All)
             {
-                Result += "<a href='/Student/Detail?ID=" + S.Id + "'><p><span class='glyphicon glyphicon-user'></span> " + S.Name + "</p></a> <a href='/Student/Delete?Id=" + S.Id + "'>Delete</a>";
+                Result += "<div><a class='btn btn-info btn-block' href='/Student/Detail?ID=" + S.Id + "'><span class='glyphicon glyphicon-user'></span> " + S.Name + "</a></div><br /><div><a class = 'btn btn-danger btn-block' href='/Student/Delete?Id=" + S.Id + "'><span class='glyphicon glyphicon-alert'></span> Delete</a></div><br />";
             }
+
 
             return Result;
         }
