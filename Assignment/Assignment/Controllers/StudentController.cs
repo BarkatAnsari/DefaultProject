@@ -27,6 +27,18 @@ namespace Assignment.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Login(User S)
+        {
+            User LoggedInUser =_ORM.User.Where<User>(m => m.Username == S.Username && m.Password == S.Password).FirstOrDefault();
+            if(LoggedInUser==null)
+            {
+                ViewBag.Message = "InValid Username or Password";
+                return View();
+            }
+
+            return RedirectToAction("Create");
+        }
 
         [HttpGet]
         public IActionResult Signup()
@@ -57,6 +69,7 @@ namespace Assignment.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Student S, IFormFile Cv)
         {
             string WWWROOT = _ENV.WebRootPath;
