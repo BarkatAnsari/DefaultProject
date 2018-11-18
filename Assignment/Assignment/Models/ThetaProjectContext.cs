@@ -17,6 +17,7 @@ namespace Assignment.Models
 
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
+        public virtual DbSet<User> User { get; set; }
 
 //        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 //        {
@@ -121,6 +122,25 @@ namespace Assignment.Models
                     .HasColumnName("Teacher_Pp")
                     .HasMaxLength(250)
                     .IsUnicode(false);
+            });
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Username)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+                entity.Property(e => e.Password)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+                entity.Property(e => e.Mobile)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false);
             });
         }
     }

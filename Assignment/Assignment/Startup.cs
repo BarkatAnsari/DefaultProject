@@ -73,7 +73,7 @@ namespace Assignment
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Student}/{action=Create}/{id?}");
+                    template: "{controller=Student}/{action=Login}/{id?}");
             });
         }
     }

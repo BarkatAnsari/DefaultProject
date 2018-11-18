@@ -21,6 +21,36 @@ namespace Assignment.Controllers
             _ENV = ENV;
             _ORM = ORM;
         }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Signup()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Signup(User S)
+        {
+            try
+            {
+                _ORM.User.Add(S);
+                _ORM.SaveChanges();
+                ViewBag.Show = "Resgistrtion Done";
+            }
+            catch(Exception ex)
+            {
+
+            }
+            return View();
+        }
+
+
         [HttpGet]
         public IActionResult Create()
         {
